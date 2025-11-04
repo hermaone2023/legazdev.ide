@@ -77,5 +77,114 @@
   <footer class="py-10 text-center text-zinc-600 text-sm border-t border-zinc-800">
     © 2025 LegazDev. All rights reserved.
   </footer>
+  <!-- Modal for project details -->
+  <div id="modal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50">
+    <div class="bg-zinc-900 rounded-2xl max-w-3xl w-full p-6 mx-4">
+      <button id="modalClose" class="ml-auto mb-4 text-zinc-400">✕</button>
+      <h3 id="modalTitle" class="text-2xl font-bold mb-2">Project Title</h3>
+      <p id="modalDesc" class="text-zinc-400 mb-4">Project description</p>
+      <div id="modalImg" class="mb-4"><img src="https://picsum.photos/900/400" class="w-full rounded-lg object-cover" /></div>
+      <div class="flex gap-3">
+        <a id="modalDemo" href="#" class="px-4 py-2 bg-indigo-600 rounded-md">Demo</a>
+        <a id="modalCode" href="#" class="px-4 py-2 border border-zinc-800 rounded-md">Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp -->
+  <a id="waFloat" href="https://wa.me/628xxxxxxxxxx" target="_blank" class="fixed right-6 bottom-6 bg-green-500 p-4 rounded-full shadow-lg z-40" title="Chat via WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5 3.5L3.5 20.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+
+  <!-- Dark / Light toggle -->
+  <button id="themeToggle" class="fixed left-6 bottom-6 bg-zinc-800/70 text-zinc-100 p-3 rounded-full shadow z-40" title="Toggle theme">🌙</button>
+
+  <style>
+    /* Modal animation */
+    #modal { display: none; }
+    #modal.show { display: flex; }
+    /* Mobile nav */
+    .mobile-nav { display: none; }
+    @media (max-width: 768px) {
+      nav.hidden.md\:flex { display: none !important; }
+      .mobile-nav { display: block; }
+    }
+  </style>
+
+  <script>
+    // Mobile menu toggle
+    const btn = document.querySelector('header button');
+    const nav = document.querySelector('nav');
+    btn?.addEventListener('click', () => {
+      const open = nav.classList.toggle('open-mobile');
+      if(open) {
+        nav.style.position = 'absolute';
+        nav.style.top = '64px';
+        nav.style.right = '20px';
+        nav.style.background = 'rgba(17,24,39,0.95)';
+        nav.style.padding = '12px';
+        nav.style.borderRadius = '8px';
+        nav.style.display = 'block';
+      } else {
+        nav.style.display = '';
+        nav.style.position = '';
+      }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Project modal
+    document.querySelectorAll('.border').forEach(card => {
+      card.addEventListener('click', (e) => {
+        const title = card.querySelector('h3')?.innerText || 'Project';
+        const desc = card.querySelector('p')?.innerText || '';
+        const img = card.querySelector('img')?.src || '';
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalDesc').innerText = desc;
+        document.getElementById('modalImg').innerHTML = `<img src="${img}" class=\"w-full rounded-lg object-cover\"/>`;
+        document.getElementById('modal').classList.add('show');
+      });
+    });
+    document.getElementById('modalClose')?.addEventListener('click', () => {
+      document.getElementById('modal').classList.remove('show');
+    });
+
+    // Lazy-load images (ensure 'loading' attr)
+    document.querySelectorAll('img').forEach(img => { img.loading = 'lazy'; });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const userTheme = localStorage.getItem('theme');
+    const root = document.documentElement;
+    if(userTheme === 'light') root.style.setProperty('--bg', '#f8fafc');
+    themeToggle.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') !== 'light';
+      if(isDark) {
+        root.setAttribute('data-theme', 'light');
+        document.body.classList.remove('bg-zinc-950');
+        document.body.classList.add('bg-white','text-zinc-900');
+        localStorage.setItem('theme','light');
+        themeToggle.innerText = '🌞';
+      } else {
+        root.removeAttribute('data-theme');
+        document.body.classList.remove('bg-white','text-zinc-900');
+        document.body.classList.add('bg-zinc-950','text-zinc-100');
+        localStorage.setItem('theme','dark');
+        themeToggle.innerText = '🌙';
+      }
+    });
+
+    // Close modal on outside click
+    document.getElementById('modal')?.addEventListener('click', (e) => {
+      if(e.target.id === 'modal') document.getElementById('modal').classList.remove('show');
+    });
+  </script>
 </body>
 </html>
