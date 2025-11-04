@@ -3,97 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portofolio – Hermawan</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f6f6f6; color: #333; }
-    header { background: #222; color: #fff; padding: 40px 20px; text-align: center; }
-    .container { max-width: 960px; margin: auto; padding: 20px; }
-    h1, h2, h3 { margin: 0 0 16px; }
-    .section { margin-bottom: 48px; }
-    ul { margin: 0; padding-left: 20px; }
-    .projects { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 20px; }
-    .project { background:#fff; padding:20px; border-radius:8px; border:1px solid #ddd; }
-    a { color:#007bff; text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    footer { text-align:center; padding:20px; background:#222; color:#fff; }
-  </style>
+  <title>LegazDev • Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <header>
-    <h1>Hi, saya Hermawan 👋</h1>
-    <p>Developer Flutter & Backend</p>
+<body class="bg-zinc-950 text-zinc-100 font-inter">
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur bg-zinc-900/60 border-b border-zinc-800">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="font-bold text-xl tracking-tight">LegazDev</div>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="#home" class="hover:text-white text-zinc-400">Home</a>
+        <a href="#projects" class="hover:text-white text-zinc-400">Projects</a>
+        <a href="#contact" class="hover:text-white text-zinc-400">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <div class="container">
-    <section class="section">
-      <h2>Keahlian</h2>
-      <ul>
-        <li>Flutter (Android, Web)</li>
-        <li>PHP, MySQL, REST API</li>
-        <li>Firebase (FCM)</li>
-        <li>UI/UX</li>
-      </ul>
-    </section>
+  <!-- HERO -->
+  <section id="home" class="min-h-screen flex items-center justify-center text-center px-6">
+    <div class="max-w-3xl">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+        Hi, I’m <span class="text-indigo-400">Hermawan</span><br />
+        I build digital products.
+      </h1>
+      <p class="text-zinc-400 text-lg md:text-xl mb-10">
+        Developer Flutter, Web & Backend. Helping organizations bring their ideas into a reliable and usable product.
+      </p>
+      <div class="flex justify-center gap-4">
+        <a href="#projects" class="px-6 py-3 bg-indigo-500 hover:bg-indigo-600 rounded-full font-medium">View Projects</a>
+        <a href="#contact" class="px-6 py-3 border border-zinc-700 hover:border-zinc-500 rounded-full font-medium">Contact</a>
+      </div>
+    </div>
+  </section>
 
-    <section class="section">
-      <h2>Projek</h2>
-      <div class="projects">
-        <div class="project">
-          <h3>Smart School</h3>
-          <p>Aplikasi sekolah digital: siswa, guru, nilai, absen, pengumuman.</p>
+  <!-- PROJECTS -->
+  <section id="projects" class="py-24 px-6 bg-zinc-900/40">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-12 text-center">Projects</h2>
+      <div class="grid md:grid-cols-2 gap-10">
+        <!-- Project Card -->
+        <div class="border border-zinc-800 rounded-2xl overflow-hidden hover:-translate-y-1 transition">
+          <img src="https://picsum.photos/600/400" class="w-full h-60 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Donorta App</h3>
+            <p class="text-zinc-400 mb-4">Blood donor app for PMI Kota Makassar.</p>
+            <a class="text-indigo-400 hover:text-indigo-300 text-sm" href="#">View more →</a>
+          </div>
         </div>
-        <div class="project">
-          <h3>Donorta</h3>
-          <p>Aplikasi donor darah – membership, gamification, notifikasi stok.</p>
-        </div>
-        <div class="project">
-          <h3>Aplikasi Kelurahan</h3>
-          <p>Layanan administrasi penduduk dan tracking permohonan surat.</p>
-        </div>
-        <div class="project">
-          <h3>Membership + Gamifikasi</h3>
-          <p>Program loyalitas dengan poin, level, dan rewards.</p>
+        <!-- Project Card -->
+        <div class="border border-zinc-800 rounded-2xl overflow-hidden hover:-translate-y-1 transition">
+          <img src="https://picsum.photos/600/401" class="w-full h-60 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Networking Marketplace</h3>
+            <p class="text-zinc-400 mb-4">Company product showcase & consultation.</p>
+            <a class="text-indigo-400 hover:text-indigo-300 text-sm" href="#">View more →</a>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section">
-      <h2>Kontak</h2>
-      <p>Email: youremail@example.com<br>
-      WhatsApp: <a href="https://wa.me/08xxxxxxxxxx" target="_blank">Klik untuk chat</a></p>
-    </section>
-  </div>
+  <!-- CONTACT -->
+  <section id="contact" class="py-24 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6">Contact</h2>
+      <p class="text-zinc-400 mb-8">Have a project or opportunity? Let’s connect.</p>
+      <a href="mailto:example@mail.com" class="px-8 py-4 bg-indigo-500 hover:bg-indigo-600 rounded-full font-medium">Send Email</a>
+    </div>
+  </section>
 
-  <footer>
-    <p>© 2025 Hermawan</p>
+  <!-- FOOTER -->
+  <footer class="py-10 text-center text-zinc-600 text-sm border-t border-zinc-800">
+    © 2025 LegazDev. All rights reserved.
   </footer>
-  <!-- ===== Additional Optimization: Contact + Projects Section ===== -->
-  <section id="projects" class="py-16 bg-gray-100">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-8 text-center">Projects</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-white shadow p-6 rounded-xl">
-          <h3 class="text-xl font-semibold mb-2">Smart School</h3>
-          <p class="text-gray-700 mb-4">Aplikasi sistem manajemen sekolah berbasis web + mobile.</p>
-          <a href="#" class="text-blue-600 font-medium">View more →</a>
-        </div>
-        <div class="bg-white shadow p-6 rounded-xl">
-          <h3 class="text-xl font-semibold mb-2">Aplikasi Kelurahan</h3>
-          <p class="text-gray-700 mb-4">Pengelolaan administrasi kelurahan berbasis web.</p>
-          <a href="#" class="text-blue-600 font-medium">View more →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-4">Contact Me</h2>
-      <p class="mb-6 text-gray-700">Tertarik bekerja sama? Silakan hubungi melalui WhatsApp atau Email.</p>
-      <a href="https://wa.me/628xxxxxxxxxx" class="px-6 py-3 bg-green-500 text-white rounded-xl inline-block mr-4">WhatsApp</a>
-      <a href="mailto:email@example.com" class="px-6 py-3 bg-blue-600 text-white rounded-xl inline-block">Email</a>
-    </div>
-  </section>
-
 </body>
 </html>
